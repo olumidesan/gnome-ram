@@ -1,0 +1,8 @@
+{
+    "name": "RAM Usage",
+    "description": "Shows the System RAM Usage as a percentage",
+    "uuid": "ram-usage@olumidesan.me",
+    "version": 1,
+    "shell-version": ["3.34"],
+    "url": "https://github.com/olumidesan/gnome-ram"
+}
