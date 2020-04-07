@@ -12,7 +12,7 @@ let panelIcon, timeout;
 
 function _queryRam() {
     // Querys the RAM using the Linux `free` command. Output is `grep`ped and `awk`ed
-    let [ok, out, err, exit] = GLib.spawn_command_line_sync('</bin/bash -c "free -m | grep Mem | awk \'{print (($2 - $7)/$2)*100}\'"');
+    let [ok, out, err, exit] = GLib.spawn_command_line_sync('/bin/bash -c "free -m | grep Mem | awk \'{print (($2 - $7)/$2)*100}\'"');
     let ram = `${parseFloat(ByteArray.toString(out)).toFixed(1).toString()}%`; // Parse as 1-decimal percentage
     return ram;
 }
