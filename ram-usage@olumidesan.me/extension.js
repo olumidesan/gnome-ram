@@ -12,8 +12,8 @@ let panelIcon, timeout;
 
 function _queryRam() {
     // Querys the RAM using the Linux `free` command. Output is `grep`ped and `awk`ed
-    let [ok, out, err, exit] = GLib.spawn_command_line_sync('/bin/bash -c "free -m | grep Mem | awk \'{print (($2 - $7)/$2)*100}\'"');
-    let ram = `${parseFloat(ByteArray.toString(out)).toFixed(1).toString()}%`; // Parse as percentage
+    let [ok, out, err, exit] = GLib.spawn_command_line_sync('</bin/bash -c "free -m | grep Mem | awk \'{print (($2 - $7)/$2)*100}\'"');
+    let ram = `${parseFloat(ByteArray.toString(out)).toFixed(1).toString()}%`; // Parse as 1-decimal percentage
     return ram;
 }
 
@@ -49,17 +49,21 @@ function init() {
 
     let label = new St.Label({ text: "..." }); // Simulate RAM query
     panelIcon.set_child(label); // Add text to icon
-
+    log("Finished Initialization");
 }
 
 function enable() {
     // Position the icon. This will eventually be customizable
+    log("Enabled...");
     Main.panel._rightBox.insert_child_at_index(panelIcon, 2);
+    log("Started monitoring RAM...");
     _refresh(); // Start scheduler
 }
 
 function disable() {
     // Cleanup
+    log("Disabled...");
    _stopTimer();
     Main.panel._rightBox.remove_child(panelIcon);
+    log("End...")
 }
