@@ -7,7 +7,7 @@ const Mainloop = imports.mainloop; // Timer/Scheduler.
 const ByteArray = imports.byteArray; // Parser for returned shell outputs
 
 
-/* Global variables for use as button to click (button) and a text label. */
+/* Global variables for use as the panel icon and as the loop timeout. */
 let panelIcon, timeout;
 
 function _queryRam() {
