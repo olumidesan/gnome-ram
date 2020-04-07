@@ -49,12 +49,13 @@ function init() {
 
     let label = new St.Label({ text: "..." }); // Simulate RAM query
     panelIcon.set_child(label); // Add text to icon
-    _refresh(); // Start scheduler
+
 }
 
 function enable() {
     // Position the icon. This will eventually be customizable
     Main.panel._rightBox.insert_child_at_index(panelIcon, 2);
+    _refresh(); // Start scheduler
 }
 
 function disable() {
